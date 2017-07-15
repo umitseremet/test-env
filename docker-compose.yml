@@ -1,0 +1,41 @@
+ version: '3'
+ services:
+   app-crossover:
+     image: maven:3.5.0-jdk-8
+     ports:
+      - '8080:8080'
+     volumes:
+      - /home/ubuntu/aws-shared/APP/java_app/:/usr/src/mvn/
+      - /home/ubuntu/aws-shared/upload:/root/upload
+     depends_on:
+       - db-crossover
+     deploy:
+       resources:
+         limits:
+           cpus: '0.35'
+           memory: 450M
+         reservations:
+           cpus: '0.15'
+           memory: 200M
+     command: bash -c "cp -pr /usr/src/mvn/PDFs/* /root/upload/ && cd /usr/src/mvn/Code && mvn spring-boot:run"
+     tty: true
+
+   db-crossover:
+     image: mysql-image-crossover
+     ports:
+      - '3306:3306'
+     deploy:
+       resources:
+         limits:
+           cpus: '0.3'
+           memory: 350M
+         reservations:
+           cpus: '0.15'
+           memory: 150M
+     volumes:
+      - /home/ubuntu/aws-shared/DB:/var/lib/mysql
+     environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=journals
+     command: bash -c "bash /mysql_start_script.sh"
+     tty: true
