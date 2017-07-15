@@ -34,10 +34,11 @@
            memory: 150M
      volumes:
       - /home/ubuntu/aws-shared/DB:/var/lib/mysql
+      - /home/ubuntu/aws-shared/vault:/mnt
      environment:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE}"
      command: bash -c "bash /mysql_start_script.sh"
      env_file:
-      - .env
+      - /mnt/.env
      tty: true
