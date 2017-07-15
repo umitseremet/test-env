@@ -34,7 +34,7 @@
            memory: 150M
      volumes:
       - /home/ubuntu/aws-shared/DB:/var/lib/mysql
-      - /home/ubuntu/aws-shared/vault:/mnt
+      - /mnt:/mnt
      environment:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE}"
