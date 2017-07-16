@@ -22,10 +22,7 @@
 
    db-crossover:
      image: mysql-image-crossover
-     build:
-       context: ./mysql
-       args:
-         REQUIREMENTS: "/home/ubuntu/vault/.env"
+     build: ./mysql
      ports:
       - '3306:3306'
      deploy:
