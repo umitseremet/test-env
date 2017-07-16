@@ -22,6 +22,8 @@
 
    db-crossover:
      image: mysql-image-crossover
+     env_file:
+      - /home/ubuntu/vault/.env
      ports:
       - '3306:3306'
      deploy:
@@ -37,7 +39,5 @@
      environment:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE}"
-     env_file:
-      - /home/ubuntu/vault/.env 
      command: bash -c "bash /mysql_start_script.sh"
      tty: true
