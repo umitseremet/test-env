@@ -22,6 +22,8 @@
 
    db-crossover:
      image: mysql-image-crossover
+     env_file:
+      - /home/ubuntu/vault/.env
      build: ./mysql
      ports:
       - '3306:3306'
