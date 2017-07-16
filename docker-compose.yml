@@ -35,7 +35,7 @@
      volumes:
       - /home/ubuntu/aws-shared/DB:/var/lib/mysql
      environment:
-      - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}"
-      - "MYSQL_DATABASE=${MYSQL_DATABASE}"
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=journals
      command: bash -c "bash /mysql_start_script.sh"
      tty: true
