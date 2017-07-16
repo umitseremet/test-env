@@ -21,10 +21,7 @@
      tty: true
 
    db-crossover:
-     build: ./mysql
      image: mysql-image-crossover
-     env_file:
-      - /home/ubuntu/vault/.env
      ports:
       - '3306:3306'
      deploy:
